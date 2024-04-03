@@ -19,9 +19,8 @@ Additionally, it emphasizes the implementation of software patterns for better c
 
 ## TODO
 Besause of lack of time next systems waiting for implementation are:
-- SignalR
-- Docker Optimization
-- Logging
+- Docker Optimization (Dockerfile, docker-compose)
+- Logging (Serilog, Nlog...)
 
 ## Project Structure
 
