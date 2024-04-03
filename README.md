@@ -23,6 +23,7 @@ Besause of lack of time next systems waiting for implementation are:
 - SignalR
 - Docker Optimization
 - Separate BL
+- Logging
 
 ## Project Structure
 
@@ -70,7 +71,6 @@ dotnet ef database update
 
 ### Build the Application
 ```
-bash
 dotnet build
 ```
 
