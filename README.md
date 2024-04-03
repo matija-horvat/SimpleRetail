@@ -22,48 +22,37 @@ Besause of lack of time next systems waiting for implementation are:
 - Authentification
 - SignalR
 - Docker Optimization
+- Separate BL
 
 ## Project Structure
 
-### Controllers
-Implement API endpoints for managing store items, suppliers, statistics, and supplier-store item relationships.
+### SimpleRetail.API
+- API endpoints are implemented for managing store items, suppliers, statistics, and supplier-store item relationships.
+- Business logic and validation is implemented to handle procurement processes, statistics generation, and interaction with the database.
 
-### Services
-Implement business logic to handle procurement processes, statistics generation, and interaction with the database.
+### SimpleRetail.Common
+- DTOs (Data Transfer Objects) are created to transfer data between the API and the client (responses).
+- Multilingualism is solved on this layer.
+- Global Error Handling is solved on this layer.
 
-### DTOs (Data Transfer Objects)
-Define DTOs to transfer data between the API and the client.
+### SimpleRetail.Data
+- The database context, models, and migrations are achieved using Entity Framework Core.
+- Seeding the database with initial values is achieved using library Bogus for generating data.
 
-### Database Project
-Implement the database context, models, and migrations using Entity Framework Core.
+### SimpleRetail.Tests
+- Automated tests are created to ensure the reliability of the application. Unit Tests are Utilize with framework xUnit.
 
 ### Swagger
-Demonstrate the usage of Swagger to document your APIs.
+Swagger is used to demonstrate usage and for documentation of APIs.
 
-### Automated Tests
-Create automated tests to ensure the reliability of the application. Utilize testing frameworks like xUnit or NUnit.
-
-### Optional: SignalR Hub or Angular Integration
+### TODO: SignalR Hub or Angular Integration
 Implement SignalR Hub for real-time communication or integrate Angular for frontend development.
 
 
 ## Database Design
 
-- Design a relational database schema to store information about store items, suppliers, statistics, and any other relevant entities in a retail procurement system.
-- Establish appropriate relationships, including a many-to-many relationship between suppliers and store items. Each store item belongs to some supplier.
-- Utilize Entity Framework Core to define the database context, models, and migrations.
-- Seed the database with initial values for store items, suppliers, and relationships. Consider using libraries like Bogus for generating data.
-
 ![image info](./images/SimpleRetail_ER_diagram.png)
 
-## Automated Testing
-
-- Write unit tests for the API controllers to ensure proper handling of requests and responses.
-- Optionally, write integration tests for the services layer to validate the correctness of business logic. Utilize a testing framework such as xUnit or NUnit.
-
-## Software Patterns
-
-- Implement at least three software patterns (e.g., builder, factory, generic repository, etc.) in relevant parts of your application to improve code organization and maintainability.
 
 ## Build, Run, and Test Instructions
 
@@ -94,8 +83,6 @@ dotnet run --project SimpleRetail.API
 ```
 dotnet test
 ```
-
-
 
 
 ## Note
