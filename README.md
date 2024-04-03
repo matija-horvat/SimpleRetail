@@ -46,8 +46,13 @@ Besause of lack of time next systems waiting for implementation are:
 ### Swagger
 Swagger is used to demonstrate usage and for documentation of APIs.
 
-### TODO: SignalR Hub or Angular Integration
-Implement SignalR Hub for real-time communication or integrate Angular for frontend development.
+### SignalR Hub
+This proof of concept is created with WEB API and Console Application.
+To test SignalR follow these steps:
+- comment line `app.UseMiddleware<ApiKeyMiddleware>();` in **Program.cs** class
+- Change url in **SignalR.POC** console application based on your localhost url
+- Run **SimpleRetail.API** project
+- Run **SignalR.POC** console application
 
 
 ## Database Design

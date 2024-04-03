@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleRetail.Tests", "Simpl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleRetail.Common", "SimpleRetail.Common\SimpleRetail.Common.csproj", "{DD498926-B968-4A13-A09B-4C859D693183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleRetail.BL", "SimpleRetail.BL\SimpleRetail.BL.csproj", "{DF86DF26-FCE6-409C-AB47-A32556E1E0C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleRetail.BL", "SimpleRetail.BL\SimpleRetail.BL.csproj", "{DF86DF26-FCE6-409C-AB47-A32556E1E0C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.POC", "SignalR.POC\SignalR.POC.csproj", "{5CB52958-94AA-483B-BD6E-E0B545F359DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{DF86DF26-FCE6-409C-AB47-A32556E1E0C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF86DF26-FCE6-409C-AB47-A32556E1E0C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF86DF26-FCE6-409C-AB47-A32556E1E0C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CB52958-94AA-483B-BD6E-E0B545F359DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB52958-94AA-483B-BD6E-E0B545F359DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB52958-94AA-483B-BD6E-E0B545F359DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB52958-94AA-483B-BD6E-E0B545F359DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

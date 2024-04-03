@@ -4,6 +4,8 @@ using SimpleRetail.Common;
 using SimpleRetail.Common.Middlewares;
 using SimpleRetail.Data;
 using System.Reflection;
+using Microsoft.AspNetCore.SignalR;
+using SimpleRetail.API.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 var assembly = Assembly.GetExecutingAssembly().GetName().Name;
@@ -15,6 +17,8 @@ builder.Services.AddControllers();
 builder.Services.AddData(builder.Configuration);
 builder.Services.AddCommon();
 builder.Services.AddBL();
+
+builder.Services.AddSignalR(); // Register SignalR
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -68,12 +72,14 @@ if (app.Environment.IsDevelopment())
 app.UseExceptionHandler("/error");
 
 app.UseMiddleware<LanguageMiddleware>();
-app.UseMiddleware<ApiKeyMiddleware>();
+//app.UseMiddleware<ApiKeyMiddleware>();
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<SignalRHub>("/myhub"); // Map SignalR hub
 
 app.Run();
