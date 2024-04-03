@@ -15,8 +15,6 @@ public static class Startup
 {
     public static IServiceCollection AddData(this IServiceCollection services, IConfiguration configuration)
     {
-        //services.AddDbContext<DataContext>();
-
         services.AddDbContextFactory<DataContext>(options =>
         {
             string connectionString = configuration.GetConnectionString("DefaultConnection");

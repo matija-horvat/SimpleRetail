@@ -19,13 +19,13 @@ Additionally, it emphasizes the implementation of software patterns for better c
 
 ## TODO
 Besause of lack of time next systems waiting for implementation are:
-- Authentification
 - SignalR
 - Docker Optimization
-- Separate BL
 - Logging
 
 ## Project Structure
+
+![image info](./images/SimpleRetail_ProjectStructure.png)
 
 ### SimpleRetail.API
 - API endpoints are implemented for managing store items, suppliers, statistics, and supplier-store item relationships.
@@ -62,8 +62,9 @@ Implement SignalR Hub for real-time communication or integrate Angular for front
 - Docker (optional, for Dockerization)
 
 ### Database Migration and Update
-Start with setting up Connection String to you database server in <em>appSettings.json</em>.
-After that, to apply database migrations and update the database schema, run the following commands:
+- Start with setting up Connection String to you database server in <em>appSettings.json</em>.
+- If you want to seed the database with some generated values update <em>dataSettings.json</em> and set **NeedSeeding** to **true**.
+- After that, to apply database migrations and update the database schema, run the following commands:
 ```
 dotnet ef migrations add InitialMigration
 dotnet ef database update

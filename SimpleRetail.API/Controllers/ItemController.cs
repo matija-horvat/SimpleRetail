@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SimpleRetail.API.Contracts;
-using SimpleRetail.API.Services;
+using SimpleRetail.BL.Contracts;
 using SimpleRetail.Common.Requests;
 using SimpleRetail.Common.Responses;
 

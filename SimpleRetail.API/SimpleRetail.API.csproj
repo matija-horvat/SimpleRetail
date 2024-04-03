@@ -10,8 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-    <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.17">
       <PrivateAssets>all</PrivateAssets>
@@ -24,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SimpleRetail.Common\SimpleRetail.Common.csproj" />
     <ProjectReference Include="..\SimpleRetail.Data\SimpleRetail.Data.csproj" />
+	  <ProjectReference Include="..\SimpleRetail.BL\SimpleRetail.BL.csproj" />
   </ItemGroup>
 
   <ItemGroup>

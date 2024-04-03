@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SimpleRetail.API.Contracts;
+using SimpleRetail.BL.Contracts;
 using SimpleRetail.API.Controllers;
 using SimpleRetail.Common.Requests;
 using SimpleRetail.Common.Responses;

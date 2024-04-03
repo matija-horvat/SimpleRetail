@@ -1,43 +1,55 @@
-using FluentValidation;
-using MediatR;
-using SimpleRetail.API.Contracts;
-using SimpleRetail.API.Global.Behavior;
+using Microsoft.OpenApi.Models;
 using SimpleRetail.API.Middlewares;
-using SimpleRetail.API.Services;
-using SimpleRetail.Data;
 using SimpleRetail.Common;
+using SimpleRetail.Common.Middlewares;
+using SimpleRetail.Data;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+var assembly = Assembly.GetExecutingAssembly().GetName().Name;
 
 // Add services to the container.
 
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
-builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IItemService, ItemService>();
-builder.Services.AddScoped<IPersonService, PersonService>();
-builder.Services.AddScoped<IStoreService, StoreService>();
-builder.Services.AddScoped<ISupplierService, SupplierService>();
-builder.Services.AddScoped<IStatisticsService, StatisticsService>();
-builder.Services.AddScoped<ISupplierStoreItemService, SupplierStoreItemService>();
+builder.Services.AddData(builder.Configuration);
+builder.Services.AddCommon();
+builder.Services.AddBL();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(config =>
 {
+    config.SwaggerDoc("v1", new OpenApiInfo { Title = assembly, Version = "v1" });
+
     // Include XML comments from the generated file
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlFile = $"{assembly}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     config.IncludeXmlComments(xmlPath);
-});
 
-builder.Services.AddData(builder.Configuration);
-builder.Services.AddCommon();
+    config.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.ApiKey,
+        Name = "X-API-KEY",
+        In = ParameterLocation.Header,
+        Description = "API Key Authentication"
+    });
+    config.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "ApiKey"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
 
 
 var app = builder.Build();
@@ -46,11 +58,17 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(config =>
+    {
+        config.SwaggerEndpoint("/swagger/v1/swagger.json", assembly);
+    });
+
 }
 
 app.UseExceptionHandler("/error");
+
 app.UseMiddleware<LanguageMiddleware>();
+app.UseMiddleware<ApiKeyMiddleware>();
 
 app.UseHttpsRedirection();
 

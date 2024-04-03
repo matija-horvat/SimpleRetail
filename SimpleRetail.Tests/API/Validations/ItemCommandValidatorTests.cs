@@ -1,4 +1,4 @@
-﻿using SimpleRetail.API.Validations.Item;
+﻿using SimpleRetail.BL.Validations.Item;
 using SimpleRetail.Tests.Common.Requests;
 
 namespace SimpleRetail.Tests.API.Validations;

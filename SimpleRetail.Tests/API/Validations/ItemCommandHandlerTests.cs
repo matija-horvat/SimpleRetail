@@ -1,5 +1,5 @@
-﻿using SimpleRetail.API.Validations.Enums;
-using SimpleRetail.API.Validations.Item;
+﻿using SimpleRetail.BL.Validations.Enums;
+using SimpleRetail.BL.Validations.Item;
 using SimpleRetail.Common.Requests;
 using SimpleRetail.Data.Contracts;
 using SimpleRetail.Tests.Common.Requests;

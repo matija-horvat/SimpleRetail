@@ -12,16 +12,6 @@ public static class Startup
             options.SerializerOptions.Converters.Add(new SimpleRetailExceptionConverter());
         });
 
-        //services.AddOptions<JsonOptions>().Configure(options =>
-        //{
-        //    options.SerializerOptions.Converters.Add(new SimpleRetailExceptionConverter());
-        //});
-
-        //services.AddControllers().AddJsonOptions(options =>
-        //{
-        //    options.JsonSerializerOptions.Converters.Add(new SimpleRetailExceptionConverter());
-        //});
-
         return services;
     }
 

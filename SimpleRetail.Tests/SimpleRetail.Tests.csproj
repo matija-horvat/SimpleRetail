@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SimpleRetail.API\SimpleRetail.API.csproj" />
+    <ProjectReference Include="..\SimpleRetail.BL\SimpleRetail.BL.csproj" />
     <ProjectReference Include="..\SimpleRetail.Common\SimpleRetail.Common.csproj" />
     <ProjectReference Include="..\SimpleRetail.Data\SimpleRetail.Data.csproj" />
   </ItemGroup>

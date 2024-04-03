@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using SimpleRetail.API.Services;
-using SimpleRetail.API.Validations.Item;
+using SimpleRetail.BL.Services;
+using SimpleRetail.BL.Validations.Item;
 using SimpleRetail.Common.Requests;
 using SimpleRetail.Common.Responses;
 using SimpleRetail.Data.Contracts;
