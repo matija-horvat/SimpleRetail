@@ -26,4 +26,6 @@ public class Messages_EN : IMessages
     public string ChangeUserIdEmptyError() { return "ChangeUserId cannot be empty."; }
 
     public string EntityCreateFailedAlreadyExists() { return "Failed to create entity. An Entity with that id already exists."; }
+
+    public string PropertyInsertDateNotExists(){ return "OrderBy Exception: Property 'InsertDate' not found in this entity."; }
 }

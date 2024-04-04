@@ -11,4 +11,6 @@ public interface IMessages
     string ChangeUserIdEmptyError();
 
     string EntityCreateFailedAlreadyExists();
+
+    string PropertyInsertDateNotExists();
 }

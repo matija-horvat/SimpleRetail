@@ -7,7 +7,7 @@ using System.Reflection;
 
 public static class Startup
 {
-    public static IServiceCollection AddBL(this IServiceCollection services)
+    public static IServiceCollection AddBL(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));

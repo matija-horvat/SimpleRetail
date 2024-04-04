@@ -6,6 +6,7 @@ using SimpleRetail.Common.Errors;
 using SimpleRetail.Data.Contracts;
 using SimpleRetail.Data.EF;
 using SimpleRetail.Data.Utils;
+using System.Linq.Expressions;
 
 namespace SimpleRetail.Data.Repositories;
 
@@ -27,7 +28,24 @@ public class CrudRepository<TEntity, TRequest, TResponse> : IRepository<TRequest
     {
         using var newContext = await _contextFactory.CreateDbContextAsync();
 
-        var entities = await newContext.Set<TEntity>().Paginate(page, recordsToTake).ToListAsync();
+        var entityType = typeof(TEntity);
+        var property = entityType.GetProperty("InsertDate");
+
+        if (property == null)
+        {
+            throw new SimpleRetailException(nameof(Configuration.Messages.PropertyInsertDateNotExists), StatusCodes.Status404NotFound);
+        }
+
+        var parameter = Expression.Parameter(entityType, "x");
+        var propertyAccess = Expression.Property(parameter, property);
+        var orderByExpression = Expression.Lambda(propertyAccess, parameter);
+
+        var orderByExpressionTyped = (Expression<Func<TEntity, DateTime>>)orderByExpression;
+
+        var entities = await newContext.Set<TEntity>()
+            .OrderBy(orderByExpressionTyped)
+            .Paginate(page, recordsToTake, orderByExpressionTyped)
+            .ToListAsync();
 
         var dtos = _mapper.Map<List<TResponse>>(entities);
 

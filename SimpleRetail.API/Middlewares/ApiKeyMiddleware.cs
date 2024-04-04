@@ -8,10 +8,12 @@ public class ApiKeyMiddleware
     private readonly RequestDelegate _next;
     private const string ApiKeyName = "X-API-KEY";
     private const string ApiKey = "SimpleRetail";
+    private readonly ILogger<ApiKeyMiddleware> _logger;
 
-    public ApiKeyMiddleware(RequestDelegate next)
+    public ApiKeyMiddleware(RequestDelegate next, ILogger<ApiKeyMiddleware> logger)
     {
         _next = next;
+        _logger = logger;
     }
 
     public async Task Invoke(HttpContext context)
@@ -24,6 +26,8 @@ public class ApiKeyMiddleware
             {
                 error = "Invalid API Key"
             };
+
+            _logger.LogError("Invalid API Key");
 
             var jsonResponse = JsonConvert.SerializeObject(errorObj);
 

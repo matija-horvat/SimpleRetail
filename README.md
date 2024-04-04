@@ -8,6 +8,7 @@ Additionally, it emphasizes the implementation of software patterns for better c
 ## Specific nugget packages used in project
 - MediatR
 - FluentValidation
+- Serilog
 - EntityFrameworkCore
 - Bogus
 - AutoMapper
@@ -20,7 +21,6 @@ Additionally, it emphasizes the implementation of software patterns for better c
 ## TODO
 Besause of lack of time next systems waiting for implementation are:
 - Docker Optimization (Dockerfile, docker-compose)
-- Logging (Serilog, Nlog...)
 
 ## Project Structure
 

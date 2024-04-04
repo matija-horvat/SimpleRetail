@@ -25,4 +25,6 @@ public class Messages_HR : IMessages
     public string ChangeUserIdEmptyError() { return "Nedostaje podatak ChangeUserId."; }
 
     public string EntityCreateFailedAlreadyExists() { return "Kreiranje entiteta nije uspjelo. Entitet s tim ID-om već postoji."; }
+
+    public string PropertyInsertDateNotExists() { return "Iznimka OrderBy: Svojstvo 'InsertDate' nije pronađeno u ovom entitetu."; }
 }
